@@ -6,5 +6,4 @@
 		"module": "es2022",
 		"target": "es2022"
 	},
-	"exclude": ["./src/plugins/db/db.types.ts"]
 }
