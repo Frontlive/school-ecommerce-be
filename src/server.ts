@@ -1,21 +1,13 @@
 import fastify from 'fastify';
-import fastifyAutoload from '@fastify/autoload';
 import fastifySwagger from '@fastify/swagger';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { dbPlugin } from './plugins/db/db.plugin';
+import { usersPlugin } from './plugins/users/users.plugin';
+import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 
 export const app = fastify({
 	logger: true,
-});
+}).withTypeProvider<TypeBoxTypeProvider>();
 
-app.register(fastifyAutoload, {
-	dir: join(__dirname, 'plugins'),
-	forceESM: true,
-});
 app.register(fastifySwagger, { routePrefix: '/documentation' });
-app.get('/', (_, reply) => {
-	reply.send('hello frontlive');
-});
+app.register(dbPlugin);
+app.register(usersPlugin, { prefix: 'api/users' });
