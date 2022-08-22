@@ -1,11 +1,13 @@
-import { FastifyInstance } from 'fastify';
+import { UserRegisterInfo } from './users.types';
+import { PrismaClient } from '@prisma/client';
 export const addNewUser =
-	(fastify: FastifyInstance) =>
-	async ({ username, password }: { username: string; password: string }) => {
-		await fastify.prisma.user.create({
+	(prisma: PrismaClient) =>
+	async ({ username, password, email }: UserRegisterInfo) => {
+		await prisma.user.create({
 			data: {
 				username,
 				password,
+				email,
 			},
 		});
 	};
