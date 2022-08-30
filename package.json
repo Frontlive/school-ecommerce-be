@@ -17,17 +17,26 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"@fastify/accepts": "^4.0.1",
+		"@fastify/cors": "^8.1.0",
 		"@fastify/swagger": "^7.4.1",
 		"@fastify/type-provider-typebox": "^2.3.0",
+		"@graphql-yoga/node": "^2.13.11",
 		"@prisma/client": "4.2.1",
 		"@sinclair/typebox": "^0.24.28",
+		"apollo-server": "^3.10.2",
+		"apollo-server-core": "^3.10.2",
 		"bcrypt": "^5.0.1",
 		"dotenv": "^16.0.1",
-		"fastify": "^4.4.0",
+		"fastify": "^4.5.3",
 		"fastify-plugin": "^4.2.0",
+		"graphql": "^16.6.0",
+		"nexus": "^1.3.0",
+		"nexus-plugin-prisma": "^0.35.0",
 		"prisma": "^4.2.1"
 	},
 	"devDependencies": {
+		"@graphql-eslint/eslint-plugin": "^3.10.7",
 		"@tsconfig/node16": "^1.0.3",
 		"@types/bcrypt": "^5.0.0",
 		"@types/node": "^18.7.2",

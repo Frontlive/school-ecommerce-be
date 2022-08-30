@@ -6,5 +6,15 @@
 		"eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended"
+	],
+	"overrides": [
+		{
+			"files": ["*.graphql"],
+			"parser": "@graphql-eslint/eslint-plugin",
+			"plugins": ["@graphql-eslint"],
+			"rules": {
+				"@graphql-eslint/known-type-names": "error"
+			}
+		}
 	]
 }
