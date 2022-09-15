@@ -48,6 +48,7 @@
 	},
 	"devDependencies": {
 		"@graphql-eslint/eslint-plugin": "^3.10.7",
+		"@faker-js/faker": "^7.5.0",
 		"@tsconfig/node16": "^1.0.3",
 		"@types/bcrypt": "^5.0.0",
 		"@types/node": "^18.7.2",
@@ -69,10 +70,10 @@
 			"prettier --write ."
 		]
 	},
-	"prisma": {
-		"seed": "nodemon -I --exec node --experimental-specifier-resolution=node  --loader ts-node/esm ./prisma/seed.ts"
-	},
 	"jest": {
 		"testEnvironment": "node"
+	},
+	"prisma": {
+		"seed": "nodemon -I --exec node --experimental-specifier-resolution=node  --loader ts-node/esm ./prisma/seed.ts"
 	}
 }
