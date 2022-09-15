@@ -10,7 +10,7 @@ export const oAuthPlugin = fp(async (fastify) => {
 		.register(session, {
 			secret: String(process.env.SESSION_COOKIE),
 			cookie: {
-				maxAge: ms('15 minutes'),
+				maxAge: ms('30 days'),
 				secure: false,
 				httpOnly: false,
 			},
