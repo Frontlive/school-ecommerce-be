@@ -3,8 +3,6 @@ import { createNewUserOpts } from './users.options';
 import { createNewUserHandler } from './users.controller';
 import { CreateNewUserRoute, UserRegisterInfo } from './users.types';
 import { addNewUser } from './users.service';
-import fp from 'fastify-plugin';
-import type { RouteHandler } from 'fastify';
 
 declare module 'fastify' {
 	interface FastifyInstance {
