@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"main": "index.ts",
 	"repository": "git@github.com:Frontlive/school-ecommerce-be.git",
-	"author": "Frontlive-Survi",
+	"author": "Frontlive",
 	"license": "MIT",
 	"type": "module",
 	"scripts": {
@@ -17,8 +17,14 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"@envelop/core": "^2.5.0",
+		"@envelop/operation-field-permissions": "^3.5.0",
+		"@escape.tech/graphql-armor": "^1.0.10",
 		"@fastify/accepts": "^4.0.1",
+		"@fastify/cookie": "^8.1.0",
 		"@fastify/cors": "^8.1.0",
+		"@fastify/sensible": "^5.1.1",
+		"@fastify/session": "^9.0.0",
 		"@fastify/swagger": "^7.4.1",
 		"@fastify/type-provider-typebox": "^2.3.0",
 		"@graphql-yoga/node": "^2.13.11",
@@ -30,6 +36,7 @@
 		"dotenv": "^16.0.1",
 		"fastify": "^4.5.3",
 		"fastify-plugin": "^4.2.0",
+		"grant": "^5.4.21",
 		"graphql": "^16.6.0",
 		"nexus": "^1.3.0",
 		"nexus-plugin-prisma": "^0.35.0",

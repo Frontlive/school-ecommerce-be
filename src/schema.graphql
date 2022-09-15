@@ -2,11 +2,6 @@
 ### Do not make changes to this file directly
 
 
-type HelloWorld {
-  dupa: Boolean
-  hello: String
-}
-
 type Query {
-  helloWorld: HelloWorld
+  ok: Boolean!
 }

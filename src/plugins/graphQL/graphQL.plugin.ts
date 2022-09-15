@@ -1,41 +1,38 @@
 import fp from 'fastify-plugin';
-import type { FastifyPluginAsync, FastifyRequest, FastifyReply } from 'fastify';
+import type { FastifyPluginAsync } from 'fastify';
 import { createServer } from '@graphql-yoga/node';
-import { makeSchema, objectType, queryField } from 'nexus';
+import { EnvelopArmor } from '@escape.tech/graphql-armor';
+import { useOperationFieldPermissions } from '@envelop/operation-field-permissions';
+import {
+	fieldAuthorizePlugin,
+	makeSchema,
+	objectType,
+	queryField,
+	scalarType,
+	stringArg,
+} from 'nexus';
 import { join } from 'node:path';
 import * as url from 'node:url';
+import { createContext, FastifyContext, UserContext } from './createContext';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-const helloWorldField = objectType({
-	name: 'HelloWorld',
-	definition(t) {
-		t.string('hello');
-		t.boolean('dupa');
-	},
-});
-
-const query = queryField('helloWorld', {
-	type: helloWorldField,
-	resolve() {
-		return { hello: 'HELLO', dupa: true };
-	},
-});
-
 const schema = makeSchema({
-	types: [query],
+	types: [],
 	outputs: {
 		schema: join(__dirname, '..', '..', 'schema.graphql'),
 	},
 	plugins: [],
 });
 
+const armor = new EnvelopArmor();
+const protection = armor.protect();
+
 export const graphQLPlugin: FastifyPluginAsync = fp(async (server) => {
-	const graphQLServer = createServer<{
-		req: FastifyRequest;
-		reply: FastifyReply;
-	}>({
+	const graphQLServer = createServer<FastifyContext, UserContext, { helloWorld: string }>({
 		schema,
+		plugins: [...protection.plugins],
+		context: createContext,
 		logging: {
 			debug: (...args) => args.forEach((arg) => server.log.debug(arg)),
 			info: (...args) => args.forEach((arg) => server.log.info(arg)),
@@ -57,7 +54,6 @@ export const graphQLPlugin: FastifyPluginAsync = fp(async (server) => {
 			});
 
 			reply.status(response.status);
-
 			reply.send(response.body);
 
 			return reply;
