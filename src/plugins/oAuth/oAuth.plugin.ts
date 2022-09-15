@@ -2,14 +2,15 @@ import fp from 'fastify-plugin';
 import fastifyCookie from '@fastify/cookie';
 import session from '@fastify/session';
 import grant from 'grant';
+import ms from 'ms';
 
 export const oAuthPlugin = fp(async (fastify) => {
 	return fastify
 		.register(fastifyCookie)
 		.register(session, {
-			secret:
-				'secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret',
+			secret: String(process.env.SESSION_COOKIE),
 			cookie: {
+				maxAge: ms('15 minutes'),
 				secure: false,
 				httpOnly: false,
 			},

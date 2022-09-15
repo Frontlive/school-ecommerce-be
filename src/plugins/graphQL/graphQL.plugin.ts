@@ -2,15 +2,7 @@ import fp from 'fastify-plugin';
 import type { FastifyPluginAsync } from 'fastify';
 import { createServer } from '@graphql-yoga/node';
 import { EnvelopArmor } from '@escape.tech/graphql-armor';
-import { useOperationFieldPermissions } from '@envelop/operation-field-permissions';
-import {
-	fieldAuthorizePlugin,
-	makeSchema,
-	objectType,
-	queryField,
-	scalarType,
-	stringArg,
-} from 'nexus';
+import { makeSchema, objectType, queryField, scalarType, stringArg } from 'nexus';
 import { join } from 'node:path';
 import * as url from 'node:url';
 import { createContext, FastifyContext, UserContext } from './createContext';

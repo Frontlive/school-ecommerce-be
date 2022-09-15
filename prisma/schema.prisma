@@ -16,3 +16,14 @@ model User {
   password String
   email String @unique
 }
+
+model Product {
+  id Int        @id @default(autoincrement())
+  title String
+  subtitle String
+  description String
+  price Int
+  pricePromo Int?
+  isNew Boolean
+  imageUrl String
+}
