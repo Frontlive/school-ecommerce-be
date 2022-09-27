@@ -2,6 +2,8 @@
 	"extends": "@tsconfig/node16/tsconfig.json",
 	"compilerOptions": {
 		"baseUrl": "./",
-		"outDir": "./build"
+		"outDir": "./build",
+		"module": "es2022",
+		"target": "es2022"
 	}
 }
